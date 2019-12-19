@@ -11,13 +11,21 @@
 #include <string>
 #include <cctype>
 
+// Chapter 3.4.3
+#include "FileExtensionManager.h"
+
 class LogAnalyzer {
 public:
 	LogAnalyzer();
+	// Chapter 3.4.3
+	LogAnalyzer(IExtensionManager* mgr);
 	~LogAnalyzer();
 
 	bool isValidLogFileName( std::string& fileName );
 	bool isValidLogFileNameEx( std::string& fileName);
+
+private:
+	IExtensionManager* manager;
 };
 
 #endif /* LOGANALYZER_H_ */

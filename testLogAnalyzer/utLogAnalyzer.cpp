@@ -67,6 +67,22 @@ TEST( IsValidLogFileNameTest, ThrowTest )
 
 }
 
+// Chapter 3.4.3
+// Dependency injection via constructor
+TEST( IsValidLogFileNameTest_Ex, AlwaysTrue )
+{
+	FakeExtensionManager *fakeMgr = new FakeExtensionManager();
+	fakeMgr->willBeValid = true;
+
+	//
+	std::string test = "short.ext";
+
+	//
+	LogAnalyzer analyzer( (IExtensionManager*)fakeMgr );
+	bool ret = analyzer.isValidLogFileNameEx( test );
+	ASSERT_TRUE( ret );
+}
+
 
 
 

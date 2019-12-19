@@ -33,4 +33,14 @@ public:
 
 	bool isValid( std::string fileName){ return true; };
 };
+
+// Chapter 3.4.3
+class FakeExtensionManager : IExtensionManager {
+public:
+	FakeExtensionManager(){};
+	~FakeExtensionManager(){};
+
+	bool willBeValid = false;
+	bool isValid( std::string fileName){ return willBeValid; };
+};
 #endif /* FILEEXTENSIONMANAGER_H_ */
