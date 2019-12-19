@@ -24,6 +24,10 @@ public:
 	bool isValidLogFileName( std::string& fileName );
 	bool isValidLogFileNameEx( std::string& fileName);
 
+	// Chapter 3.4.5
+	void set( IExtensionManager* mgr );
+	IExtensionManager* get();
+
 private:
 	IExtensionManager* manager;
 };

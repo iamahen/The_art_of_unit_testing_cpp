@@ -60,3 +60,7 @@ bool LogAnalyzer::isValidLogFileNameEx( std::string& fileName)
 {
 	return manager->isValid(fileName);
 }
+
+// Chapter 3.4.5
+void LogAnalyzer::set( IExtensionManager* mgr ){ manager = mgr; };
+IExtensionManager* LogAnalyzer::get(){ return manager; };
