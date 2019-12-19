@@ -17,6 +17,7 @@ public:
 	~LogAnalyzer();
 
 	bool isValidLogFileName( std::string& fileName );
+	bool isValidLogFileNameEx( std::string& fileName);
 };
 
 #endif /* LOGANALYZER_H_ */

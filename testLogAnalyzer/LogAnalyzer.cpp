@@ -10,6 +10,9 @@
 #include <stdexcept>
 #include <sstream>
 
+// Chapter3
+#include "FileExtensionManager.h"
+
 LogAnalyzer::LogAnalyzer() {
 	// TODO Auto-generated constructor stub
 
@@ -50,4 +53,9 @@ bool LogAnalyzer::isValidLogFileName( std::string& fileName )
 	}
 
 	return true;
+}
+bool LogAnalyzer::isValidLogFileNameEx( std::string& fileName)
+{
+	IExtensionManager* mgr = (IExtensionManager*)new FileExtensionManager();
+	return mgr->isValid(fileName);
 }
