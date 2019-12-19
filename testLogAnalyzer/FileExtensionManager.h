@@ -41,6 +41,17 @@ public:
 	~FakeExtensionManager(){};
 
 	bool willBeValid = false;
-	bool isValid( std::string fileName){ return willBeValid; };
+
+	// Chapter 3.4.4
+	std::string exceptionWillThrow = "";
+
+
+	bool isValid( std::string fileName){
+		if( !exceptionWillThrow.empty() )
+		{
+			throw exceptionWillThrow;
+		}
+		return willBeValid;
+	};
 };
 #endif /* FILEEXTENSIONMANAGER_H_ */
