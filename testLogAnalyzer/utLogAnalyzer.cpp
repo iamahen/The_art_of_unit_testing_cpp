@@ -83,6 +83,26 @@ TEST( IsValidLogFileNameTest_Ex, AlwaysTrue )
 	ASSERT_TRUE( ret );
 }
 
+TEST( IsValidLogFileNameTest_Ex, AlwaysFalse )
+{
+	FakeExtensionManager *fakeMgr = new FakeExtensionManager();
+	fakeMgr->exceptionWillThrow = "This is fake.";
+
+	//
+	std::string test = "anything.anyextension";
+
+	//
+	LogAnalyzer analyzer( (IExtensionManager*)fakeMgr );
+	bool ret = true;
+	try{
+		ret = analyzer.isValidLogFileNameEx( test );
+	}
+	catch( std::string e)
+	{
+		ret = false;
+	}
+	ASSERT_FALSE( ret );
+}
 
 
 
