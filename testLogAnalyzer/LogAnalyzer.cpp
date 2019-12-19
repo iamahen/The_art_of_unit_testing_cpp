@@ -7,6 +7,8 @@
 
 #include "LogAnalyzer.h"
 #include <algorithm>
+#include <stdexcept>
+#include <sstream>
 
 LogAnalyzer::LogAnalyzer() {
 	// TODO Auto-generated constructor stub
@@ -20,15 +22,32 @@ LogAnalyzer::~LogAnalyzer() {
 bool LogAnalyzer::isValidLogFileName( std::string& fileName )
 {
 	std::string strExt = ".SLF";
-	std::string strEnd = fileName.substr( fileName.length() - strExt.length());
 
-	// Ignore case sensitive
-	std::transform( strEnd.begin(), strEnd.end(),strEnd.begin(), ::toupper );
-
-	if( !strEnd.compare( strExt ) )
+	// Filename has to be provided
+	if( fileName.length() == 0 )
 	{
-		return true;
+		std::string errMsg = "Filename has to be provided";
+		throw std::logic_error( errMsg );
 	}
 
-	return false;
+	// Ignore case sensitive
+	std::string strFileName = fileName;
+	std::transform( strFileName.begin(), strFileName.end(),strFileName.begin(), ::toupper );
+
+	// Invalid extension
+	std::size_t pos = strFileName.rfind( strExt );
+	if( pos == -1 )
+	{
+		return false;
+	}
+
+	// Filename has to be provided
+	std::string strName = fileName.substr( 0, fileName.length() - strExt.length() );
+	if( strName.length() == 0 )
+	{
+		std::string errMsg = "Filename has to be provided";
+		throw std::logic_error( errMsg );
+	}
+
+	return true;
 }

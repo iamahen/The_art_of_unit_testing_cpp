@@ -14,6 +14,10 @@ int main(int argc, char** argv) {
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 
 	::testing::InitGoogleTest(&argc, argv);
+
+	// Ignore some TEST
+	::testing::GTEST_FLAG(filter) = "-IsValidLogFileNameTest.ThrowTest";
+
 	RUN_ALL_TESTS();
 
 	return 0;
