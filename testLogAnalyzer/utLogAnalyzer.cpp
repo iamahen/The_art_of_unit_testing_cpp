@@ -107,7 +107,7 @@ TEST( IsValidLogFileNameTest_Ex, AlwaysFalse )
 }
 
 // Chapter 3.4.5
-// Dependency injection via constructor
+// Dependency injection via get; set;
 TEST( IsValidLogFileNameTest_Ex, ReturnTrue )
 {
 	FakeExtensionManager *fakeMgr = new FakeExtensionManager();

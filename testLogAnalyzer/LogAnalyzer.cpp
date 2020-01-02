@@ -11,8 +11,9 @@
 #include <sstream>
 
 LogAnalyzer::LogAnalyzer() {
-	// TODO Auto-generated constructor stub
-
+	// Chapter 3.4.6, Dependency Injection via Factory
+	ExtensionManagerFactory mgrFactory;
+	manager = mgrFactory.create();
 }
 
 LogAnalyzer::LogAnalyzer(IExtensionManager* mgr)
@@ -21,7 +22,7 @@ LogAnalyzer::LogAnalyzer(IExtensionManager* mgr)
 }
 
 LogAnalyzer::~LogAnalyzer() {
-	// TODO Auto-generated destructor stub
+	delete manager;
 }
 
 bool LogAnalyzer::isValidLogFileName( std::string& fileName )

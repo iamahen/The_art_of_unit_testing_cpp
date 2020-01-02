@@ -54,4 +54,19 @@ public:
 		return willBeValid;
 	};
 };
+
+// Chapter 3.4.6
+class ExtensionManagerFactory{
+public:
+	ExtensionManagerFactory();
+	~ExtensionManagerFactory();
+
+	IExtensionManager* create();
+	void setManager( IExtensionManager* mgr );
+
+private:
+	IExtensionManager* customManager = nullptr;
+};
+
+
 #endif /* FILEEXTENSIONMANAGER_H_ */

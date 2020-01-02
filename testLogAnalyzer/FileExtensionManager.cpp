@@ -19,3 +19,24 @@ FileExtensionManager::~FileExtensionManager() {
 bool FileExtensionManager::isValid( std::string fileName) {
 	return true;
 }
+
+// ExtensionManagerFactory
+ExtensionManagerFactory::ExtensionManagerFactory() {
+
+}
+
+ExtensionManagerFactory::~ExtensionManagerFactory(){
+
+}
+
+IExtensionManager* ExtensionManagerFactory::create(){
+	if( customManager != nullptr)
+	{
+		return customManager;
+	}
+	return (IExtensionManager*)new FileExtensionManager();
+}
+
+void ExtensionManagerFactory::setManager( IExtensionManager* mgr ) {
+	customManager = mgr;
+}
