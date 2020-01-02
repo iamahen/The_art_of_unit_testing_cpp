@@ -18,7 +18,7 @@ public:
 	virtual bool isValid( std::string fileName ) = 0;
 };
 
-class FileExtensionManager : IExtensionManager {
+class FileExtensionManager : public IExtensionManager {
 public:
 	FileExtensionManager();
 	~FileExtensionManager();
@@ -26,7 +26,7 @@ public:
 	bool isValid( std::string fileName);
 };
 
-class AlwaysValidFakeExtensionManager : IExtensionManager {
+class AlwaysValidFakeExtensionManager : public IExtensionManager {
 public:
 	AlwaysValidFakeExtensionManager(){};
 	~AlwaysValidFakeExtensionManager(){};
@@ -35,7 +35,7 @@ public:
 };
 
 // Chapter 3.4.3
-class FakeExtensionManager : IExtensionManager {
+class FakeExtensionManager : public IExtensionManager {
 public:
 	FakeExtensionManager(){};
 	~FakeExtensionManager(){};

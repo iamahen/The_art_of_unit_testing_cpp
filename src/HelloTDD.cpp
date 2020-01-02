@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
 	::testing::InitGoogleTest(&argc, argv);
 
 	// Ignore some TEST
-	::testing::GTEST_FLAG(filter) = "-IsValidLogFileNameTest.ThrowTest";
+	// ::testing::GTEST_FLAG(filter) = "-IsValidLogFileNameTest*";
 
 	RUN_ALL_TESTS();
 

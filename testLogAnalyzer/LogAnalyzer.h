@@ -31,5 +31,4 @@ public:
 private:
 	IExtensionManager* manager;
 };
-
 #endif /* LOGANALYZER_H_ */

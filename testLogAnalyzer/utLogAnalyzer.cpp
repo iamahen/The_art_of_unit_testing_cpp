@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "LogAnalyzer.h"
+#include "TestableLogAnalyzer.h"
 
 // Parameterized tests
 class TestLogAnalyzer : public ::testing::TestWithParam<std::string>
@@ -123,3 +124,18 @@ TEST( IsValidLogFileNameTest_Ex, ReturnTrue )
 	ASSERT_TRUE( ret );
 }
 
+// Chapter 3.4.6
+// ref. code 3.7, Extract and Override
+TEST( TestableLogAnalyzer, Override_Test )
+{
+	FakeExtensionManager *stub = new FakeExtensionManager();
+	stub->willBeValid = true;
+
+	//
+	std::string test = "file.ext";
+
+	//
+	TestableLogAnalyzer *logan = new TestableLogAnalyzer(stub);
+	bool result = logan->isValidLogFileName( test );
+	ASSERT_TRUE( result );
+}
